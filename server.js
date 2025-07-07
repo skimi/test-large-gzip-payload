@@ -6,8 +6,6 @@ const PORT = 3000;
 
 // Generate a huge, highly compressible JSON object split into multiple keys (e.g., 700MB total, 50MB per chunk)
 const CHUNK_SIZE_MB = 50;
-const TOTAL_SIZE_MB = 700;
-const NUM_CHUNKS = Math.ceil(TOTAL_SIZE_MB / CHUNK_SIZE_MB);
 const CHUNK_STRING = 'A'.repeat(CHUNK_SIZE_MB * 1024 * 1024); // 50MB string
 
 const server = http.createServer((req, res) => {
@@ -33,7 +31,7 @@ const server = http.createServer((req, res) => {
       let sizeMB = 700;
       try {
         const parsed = JSON.parse(body);
-        if (parsed && typeof parsed.sizeMB === 'number' && parsed.sizeMB > 0 && parsed.sizeMB <= 1000) {
+        if (parsed && typeof parsed.sizeMB === 'number' && parsed.sizeMB > 0) {
           sizeMB = parsed.sizeMB;
         }
       } catch (e) {}
