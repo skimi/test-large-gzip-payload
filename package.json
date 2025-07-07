@@ -1,0 +1,17 @@
+{
+  "name": "test-large-gzip-payload",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^9.2.0",
+    "http-server": "^14.1.1"
+  },
+  "scripts": {
+    "start": "concurrently \"node server.js\" \"http-server -p 8080 -c-1\""
+  },
+  "volta": {
+    "node": "20.16.0",
+    "yarn": "1.19.2"
+  }
+}
